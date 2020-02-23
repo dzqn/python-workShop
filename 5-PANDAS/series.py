@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import pandas as pd
 
@@ -19,12 +18,16 @@ print("Ortalama: ", sayilar.mean())
 
 print("*" * 80)
 
-milligelir = pd.read_csv("../milligelir.csv")
+milligelir = pd.read_csv("../milligelir.csv", squeeze=True)
 print(milligelir)
 print("ilk 5 hane")
 print(milligelir.head(5))
 print("son 5 hane")
 print(milligelir.tail(5))
+print("En küçük gelirin indexi")
+print(milligelir.idxmin())
+print("En büyük gelirin indexi")
+print(milligelir.idxmax())
 
 print("-" * 80)
 
@@ -41,3 +44,25 @@ print("Listeye Çevirme")
 print(list(ulkeler))
 print("Dictionary Hali:")
 print(dict(ulkeler))
+
+print("-" * 80)
+
+print("Sıralı Ülkeler")
+print(ulkeler.sort_values())
+print("Sıralı gelir:")
+print(milligelir.sort_values(ascending=False))
+
+print("-" * 80)
+
+print("ABD" in ulkeler.values)
+print(ulkeler[0])
+print(ulkeler[4:10])
+print(ulkeler[5:])
+
+print("-" * 80)
+
+kitalar = pd.read_csv("../kita.csv", squeeze=True)
+print(kitalar)
+print("Her bir elemandan kaç tane var ?")
+print(kitalar.value_counts())
+print(kitalar.value_counts(ascending=True))
